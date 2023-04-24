@@ -15,8 +15,6 @@ public class Main {
         Student st1 = new Student("Hana", "Kiel", 12129822,4);
         Student st3 = new Student("Thomas", "Bonn", 345432231,5);
         Student st4 = new Student("Otto", "Flensburg", 982912312,6);
-
-
        // System.out.println(student);
        // System.out.println(student1);
        // System.out.println(Objects.equals(student.studentNr, student1.studentNr));
