@@ -11,10 +11,10 @@ public class Main {
         Student student = new Student("Aida", "Bonn", 911911911,1);
         Student student1 = new Student("Hans", "Kaiserslautern", 12121311,2);
 
-        Student st = new Student("Aida", "Bonn", 911911911,3);
-        Student st1 = new Student("Hana", "Kiel", 12129822,4);
-        Student st3 = new Student("Thomas", "Bonn", 345432231,5);
-        Student st4 = new Student("Otto", "Flensburg", 982912312,6);
+        Student st = new Student("Aida", "Bonn", 911911911,1);
+        Student st1 = new Student("Hana", "Kiel", 12129822,2);
+        Student st3 = new Student("Thomas", "Bonn", 345432231,3);
+        Student st4 = new Student("Otto", "Flensburg", 982912312,4);
        // System.out.println(student);
        // System.out.println(student1);
        // System.out.println(Objects.equals(student.studentNr, student1.studentNr));
