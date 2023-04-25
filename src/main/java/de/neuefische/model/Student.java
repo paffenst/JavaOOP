@@ -1,20 +1,39 @@
 package de.neuefische.model;
-
 import java.lang.*;
 import java.util.Objects;
 
 public class Student {
-    public int studentNr;
-    public String name;
-    public String city;
+    private int studentNr;
+    private String name;
+    private String city;
+    private String adress;
+    private int cardNr;
     private int id;
 
 
-    public Student(String name, String city, int studentNr,int id) {
+    public Student(String name,String adress,int cardNr, String city ,int studentNr,int id) {
         this.city = city;
         this.name = name;
+        this.adress = adress;
+        this.cardNr = cardNr;
         this.studentNr = studentNr;
         this.id = id;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public void setCardNr(int cardNr) {
+        this.cardNr = cardNr;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public int getCardNr() {
+        return cardNr;
     }
 
     public int getId() {
@@ -51,11 +70,16 @@ public class Student {
         this.city = city;
     }
 
+    @Override
     public String toString() {
-        return "The name of the student is " +
-                this.name + ", he lives is " +
-                this.city + " and his student-number is " +
-                this.studentNr;
+        return "Student{" +
+                "studentNr=" + studentNr +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", adress='" + adress + '\'' +
+                ", cardNr=" + cardNr +
+                ", id=" + id +
+                '}';
     }
 
     @Override
@@ -70,4 +94,5 @@ public class Student {
     public int hashCode() {
         return Objects.hash(getStudentNr(), getName(), getCity(), getId());
     }
+
 }
