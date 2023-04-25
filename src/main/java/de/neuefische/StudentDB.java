@@ -10,13 +10,20 @@ public class StudentDB {
     public Student[] getAllStudents(){
         return students;
     }
-    public String toString(){
-        return Arrays.toString(students);
+
+    @Override
+    public String toString() {
+        return "StudentDB{" +
+                "students=" + Arrays.toString(students) +
+                '}';
     }
 
     public Student randomStudent(){
-        int random = (int) (Math.random()*students.length);
-        return students[random];
+        Random rng = new Random();
+        rng.nextInt(students.length);
+    //    int random = (int) (Math.random()*students.length);
+    //    return students[random];
+        return students[rng.nextInt(students.length)];
     }
 
     public void addStudent(Student newStudent){
@@ -24,7 +31,7 @@ public class StudentDB {
         students[students.length - 1] = newStudent;
     }
 
-    public void removeStudent(Student exStudent){
+    public Student[] removeStudent(Student exStudent){
         Student[] newStudents = new Student[students.length -1];
         int diff = 0;
         for(int i=0; i<students.length;i++){
@@ -35,5 +42,6 @@ public class StudentDB {
             }
         }
         students = newStudents;
+        return newStudents;
     }
 }

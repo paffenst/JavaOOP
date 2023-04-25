@@ -2,9 +2,8 @@ package de.neuefische;
 
 import de.neuefische.model.Student;
 
-import java.util.Arrays;
-import java.util.Objects;
-
+import java.util.*;
+import de.neuefische.model.Student;
 public class Main {
     public static void main(String[] args) {
 
@@ -19,8 +18,7 @@ public class Main {
        // System.out.println(student1);
        // System.out.println(Objects.equals(student.studentNr, student1.studentNr));
 
-        StudentDB db;
-        db = new StudentDB(new Student[] {st1,st,st3,st4});
+        StudentDB db = new StudentDB(new Student[] {st1,st,st3,st4});
 
         System.out.println("LIST");
         System.out.println(db);
@@ -32,6 +30,5 @@ public class Main {
         System.out.println("Add a student");
         db.addStudent(st4);
         System.out.println(db);
-
     }
 }
