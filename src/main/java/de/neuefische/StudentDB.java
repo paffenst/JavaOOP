@@ -3,45 +3,38 @@ import java.util.*;
 import de.neuefische.model.Student;
 
 public class StudentDB {
-    private Student[] students;
+   // private Student[] students;
+    List<Student> students;
     public StudentDB(Student[] students) {
-        this.students = students;
+        this.students = Arrays.asList(students);
     }
+
     public Student[] getAllStudents(){
-        return students;
+        return this.students.toArray(new Student[students.size()]); // ArrayList in A
     }
 
     @Override
     public String toString() {
         return "StudentDB{" +
-                "students=" + Arrays.toString(students) +
+                "students=" + students +
                 '}';
     }
 
     public Student randomStudent(){
         Random rng = new Random();
-        rng.nextInt(students.length);
+        rng.nextInt(students.size());
     //    int random = (int) (Math.random()*students.length);
     //    return students[random];
-        return students[rng.nextInt(students.length)];
+        return students.get(rng.nextInt(students.size()));
     }
 
-    public void addStudent(Student newStudent){
-      students = Arrays.copyOf(students, students.length + 1);
-        students[students.length - 1] = newStudent;
+    public Student[] addStudent(Student newStudent){
+    students.add(newStudent);
+    return this.students.toArray(new Student[students.size()]);
     }
 
     public Student[] removeStudent(Student exStudent){
-        Student[] newStudents = new Student[students.length -1];
-        int diff = 0;
-        for(int i=0; i<students.length;i++){
-            if(!students[i].equals(exStudent)){
-                newStudents[i-diff] = students[i];
-            } else {
-                diff++;
-            }
-        }
-        students = newStudents;
-        return newStudents;
+        students.remove(exStudent);
+        return this.students.toArray(new Student[students.size()]);
     }
 }
