@@ -5,13 +5,19 @@ import de.neuefische.Citizen;
 public class ComputerScienceStudent extends Student implements Citizen {
     private String skills;
 
-    public ComputerScienceStudent() {
-
+    public ComputerScienceStudent(String id, String name,String adress, int cardNr, PartyInviteStatus partyInviteStatus, String skills) {
+        super(id, name, adress, cardNr, partyInviteStatus);
+        this.skills = skills;
     }
 
-    public ComputerScienceStudent(String name, String adress, int cardNr, String city, int studentNr, int id, String skills) {
-        super(name, adress, cardNr, city, studentNr, id);
-        this.skills = skills;
+    @Override
+    public String toString() {
+        return "ComputerScienceStudent{" +
+                "skills='" + skills + '\'' +
+                "} " + super.toString();
+    }
+
+    public ComputerScienceStudent() {
     }
 
     public String getSkills() {
@@ -23,19 +29,7 @@ public class ComputerScienceStudent extends Student implements Citizen {
     }
 
     @Override
-    public String toString() {
-        return "ComputerScienceStudent{" +
-                "skills='" + skills + '\'' +
-                "} " + super.toString();
-    }
-
-    @Override
-    public String getAdress() {
-        return super.getAdress();
-    }
-
-    @Override
     public int getIdentityCardNumber() {
-        return super.getCardNr();
+        return 0;
     }
 }

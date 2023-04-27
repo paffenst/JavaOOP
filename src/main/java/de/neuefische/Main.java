@@ -1,27 +1,37 @@
 package de.neuefische;
 
-import de.neuefische.model.BiologyStudent;
-import de.neuefische.model.ComputerScienceStudent;
-import de.neuefische.model.Student;
-
+import de.neuefische.model.*;
 import java.util.*;
-import de.neuefische.model.Student;
+
 public class Main {
     public static void main(String[] args) {
 
-//        Student student = new Student("Aida", "Bonn", 911911911,1);
-//        Student student1 = new Student("Hans", "Kaiserslautern", 12121311,2);
 
-        Student st = new Student("Aida", "Hauptstr.1",121212,"Bonn", 911911911,1);
-        Student st1 = new Student("Hana","Hauptstr.2" ,121212,"Kiel", 12129822,2);
-        Student st3 = new Student("Thomas","Hauptstr.3" ,12121212,"Bonn",345432231,3);
-        Student st4 = new Student("Otto", "Hauptstr.22",12123112,"Flensburg" ,982912312,4);
-        BiologyStudent bioStudent = new BiologyStudent("Otto","Flotowstr.2",123413,"Bonn",911911,1,true);
-        ComputerScienceStudent comStudent = new ComputerScienceStudent("Marco","Belineralle.100",342123,"Kiel",123454,2,"Java");
+        Student s1 = new Student("1","Anna","Hauptstraße 1",123212, PartyInviteStatus.INVITED);
+        Student s2 = new Student("2","Hana","Hauptstraße 23",132123,PartyInviteStatus.INVITED_ACCEPTED);
+        Student s3 = new Student("3","Adam","Bonnerstraße 44",432134,PartyInviteStatus.INVITED_ACCEPTED);
+        Student s4 = new Student("4","Musa","Bonnerstraße 44",432134,PartyInviteStatus.INVITED_ACCEPTED);
 
+        BiologyStudent bst1 = new BiologyStudent("5","IVON","Flotowstr.1",82171,PartyInviteStatus.INVITED_ACCEPTED,true);
+        ComputerScienceStudent com1 = new ComputerScienceStudent("6","Darko","Boschstr.20",3123123,PartyInviteStatus.NOT_INVITED,"Java");
+        Map<String, Student> students = new HashMap<>() {{
+            put("1",s1);
+            put("2",s2);
+            put("3",s3);
+        }};
 
-        System.out.println(bioStudent.toString());
-        System.out.println(comStudent.toString());
+        StudentDB stDB = new StudentDB(students);
+        System.out.println(students);
+        stDB.addStudent(bst1);
+        stDB.addStudent(com1);
+        System.out.println(students);
+        stDB.removeStudent(com1);
+        System.out.println(students);
 
+        try {
+            System.out.println(stDB.getStudentById("7"));
+        } catch (StudentNotFoundException e) {
+            System.out.println("Hups, eine Exception!");
+        }
     }
 }

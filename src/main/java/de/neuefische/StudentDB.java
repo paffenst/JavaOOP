@@ -1,40 +1,46 @@
 package de.neuefische;
+
+import java.rmi.NoSuchObjectException;
 import java.util.*;
+
 import de.neuefische.model.Student;
 
 public class StudentDB {
-   // private Student[] students;
-    List<Student> students;
-    public StudentDB(Student[] students) {
-        this.students = Arrays.asList(students);
+    private Map<String, Student> studentsMap = new HashMap<>();
+
+    public StudentDB(Map<String, Student> studentsMap) {
+        this.studentsMap = studentsMap;
     }
 
-    public Student[] getAllStudents(){
-        return this.students.toArray(new Student[students.size()]); // ArrayList in A
+    public Map<String, Student> getStudentsMap() {
+        return studentsMap;
     }
 
-    @Override
-    public String toString() {
-        return "StudentDB{" +
-                "students=" + students +
-                '}';
+    public void setStudentsMap(Map<String, Student> studentsMap) {
+        this.studentsMap = studentsMap;
     }
 
-    public Student randomStudent(){
-        Random rng = new Random();
-        rng.nextInt(students.size());
-    //    int random = (int) (Math.random()*students.length);
-    //    return students[random];
-        return students.get(rng.nextInt(students.size()));
+    public Student addStudent(Student student) {
+        studentsMap.put(student.getId(), student);
+        return studentsMap.get(student.getId());
+    }
+    public Student getStudentById(String id) throws StudentNotFoundException {
+        if (studentsMap.containsKey(id)) {
+            return studentsMap.get(id);
+        } else {
+            throw new StudentNotFoundException("Student with id" + id + " not found");
+        }
+    }
+    public Student removeStudent(Student exStudent) {
+        studentsMap.get(exStudent.getId());
+        return studentsMap.remove(exStudent.getId());
     }
 
-    public Student[] addStudent(Student newStudent){
-    students.add(newStudent);
-    return this.students.toArray(new Student[students.size()]);
-    }
-
-    public Student[] removeStudent(Student exStudent){
-        students.remove(exStudent);
-        return this.students.toArray(new Student[students.size()]);
+    public Student findById(String id) throws NoSuchObjectException {
+        if (this.studentsMap.containsKey(id)) {
+            return this.studentsMap.get(id);
+        } else {
+            throw new NoSuchObjectException("Student not found");
+        }
     }
 }

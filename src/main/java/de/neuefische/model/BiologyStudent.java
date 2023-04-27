@@ -1,36 +1,34 @@
 package de.neuefische.model;
 
 import de.neuefische.Citizen;
-
 public class BiologyStudent extends Student implements Citizen {
-    private boolean loborSkills;
+    private boolean laborSkills;
 
-    public BiologyStudent(String name, String adress, int cardNr, String city, int studentNr, int id, boolean loborSkills) {
-        super(name, adress, cardNr, city, studentNr, id);
-        this.loborSkills = loborSkills;
+    public BiologyStudent(String id, String name, String adress, int cardNr, PartyInviteStatus partyInviteStatus, boolean laborSkills) {
+        super(id, name, adress, cardNr, partyInviteStatus);
+        this.laborSkills = laborSkills;
     }
 
     public BiologyStudent() {
     }
 
-    public boolean isLoborSkills() {
-        return loborSkills;
+    public boolean isLaborSkills() {
+        return laborSkills;
     }
 
-    public void setLoborSkills(boolean loborSkills) {
-        this.loborSkills = loborSkills;
+    public void setLaborSkills(boolean laborSkills) {
+        this.laborSkills = laborSkills;
     }
-
-
 
     @Override
-    public String getAdress() {
-        return super.getAdress();
+    public String toString() {
+        return "BiologyStudent{" +
+                "laborSkills=" + laborSkills +
+                "} " + super.toString();
     }
 
     @Override
     public int getIdentityCardNumber() {
-        return super.getCardNr();
+        return 0;
     }
-
 }
